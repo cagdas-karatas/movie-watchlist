@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-watchlist
+  labels:
+    app: movie-watchlist
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: movie-watchlist
+  template:
+    metadata:
+      labels:
+        app: movie-watchlist
+    spec:
+      containers:
+      - name: app
+        image: movie-watchlist:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: movie-watchlist-config
+        - secretRef:
+            name: movie-watchlist-secret
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
