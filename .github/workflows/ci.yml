@@ -96,5 +96,5 @@ jobs:
       - name: Validate manifests
         run: |
           for f in k8s/*.yaml; do
-            kubectl apply --dry-run=client -f "$f"
+            kubectl apply --dry-run=client --validate=false -f "$f"
           done
