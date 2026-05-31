@@ -94,7 +94,6 @@ else:
                 if st.button("İzlendi", key=f"watch_{movie['id']}"):
                     mark_watched(movie["id"])
                     st.rerun()
-            else:
-                if st.button("Sil", key=f"delete_{movie['id']}"):
-                    delete_movie(movie["id"])
-                    st.rerun()
+            if st.button("Sil", key=f"delete_{movie['id']}"):
+                delete_movie(movie["id"])
+                st.rerun()
