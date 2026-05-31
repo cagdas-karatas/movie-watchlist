@@ -23,7 +23,6 @@ def pg_engine(postgres_container):
 
 @pytest.fixture(scope="function")
 def pg_session(pg_engine):
-    from sqlalchemy import text
 
     Session = sessionmaker(bind=pg_engine)
     session = Session()

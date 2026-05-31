@@ -78,7 +78,9 @@ def test_search_filters_movies(page):
     page.wait_for_timeout(4000)
 
     # Arama API doğrulaması
-    search_result = requests.get(f"{API_URL}/movies/search", params={"q": "Unique Alpha"}).json()
+    search_result = requests.get(
+        f"{API_URL}/movies/search", params={"q": "Unique Alpha"}
+    ).json()
     assert len(search_result) == 1
     assert search_result[0]["title"] == "Unique Alpha Film"
 

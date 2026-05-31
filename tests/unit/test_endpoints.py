@@ -8,7 +8,9 @@ def test_health_endpoint(client):
 
 
 def test_create_movie_endpoint_returns_201(client):
-    payload = {"title": "The Matrix", "director": "Wachowski", "year": 1999, "genre": "Sci-Fi"}
+    payload = {
+        "title": "The Matrix", "director": "Wachowski", "year": 1999, "genre": "Sci-Fi"
+    }
     response = client.post("/movies", json=payload)
     assert response.status_code == 201
     data = response.json()

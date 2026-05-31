@@ -5,7 +5,9 @@ from src.services.movie_service import create_movie, get_movies, update_movie
 
 
 def test_create_and_retrieve_movie_postgres(pg_session):
-    data = MovieCreate(title="Blade Runner", director="Scott", year=1982, genre="Sci-Fi")
+    data = MovieCreate(
+        title="Blade Runner", director="Scott", year=1982, genre="Sci-Fi"
+    )
     movie = create_movie(pg_session, data)
 
     assert movie.id is not None
@@ -40,7 +42,9 @@ def test_filter_movies_by_watched_postgres(pg_session):
 
 
 def test_update_persists_to_db_postgres(pg_engine, pg_session):
-    data = MovieCreate(title="The Godfather", director="Coppola", year=1972, genre="Drama")
+    data = MovieCreate(
+        title="The Godfather", director="Coppola", year=1972, genre="Drama"
+    )
     movie = create_movie(pg_session, data)
     movie_id = movie.id
 

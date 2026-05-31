@@ -68,7 +68,9 @@ with st.sidebar:
             else:
                 st.error("Film eklenemedi.")
 
-search_query = st.text_input("🔍 Film ara...", key="search_box", placeholder="Başlık veya yönetmen")
+search_query = st.text_input(
+    "🔍 Film ara...", key="search_box", placeholder="Başlık veya yönetmen"
+)
 
 movies = fetch_movies(search_query.strip() if search_query else "")
 
@@ -76,7 +78,8 @@ if not movies:
     st.info("Listede film yok." if not search_query else "Arama sonucu bulunamadı.")
 else:
     header = st.columns([3, 2, 1, 2, 1, 1, 1])
-    for col, label in zip(header, ["Başlık", "Yönetmen", "Yıl", "Tür", "İzlendi", "Puan", ""]):
+    labels = ["Başlık", "Yönetmen", "Yıl", "Tür", "İzlendi", "Puan", ""]
+    for col, label in zip(header, labels):
         col.markdown(f"**{label}**")
     st.divider()
 
