@@ -1,6 +1,6 @@
 # Movie Watchlist — Bulut Mimarilerinde Test Mühendisliği Dönem Projesi Final Raporu
 
-**Öğrenci:** cagdas-karatas  
+**Öğrenciler:** Çağdaş Karataş, Eren Şeremet  
 **Ders:** Bulut Mimarilerinde Test Mühendisliği  
 **Tarih:** Mayıs 2026
 
