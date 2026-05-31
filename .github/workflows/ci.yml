@@ -91,10 +91,10 @@ jobs:
     needs: docker-build
     steps:
       - uses: actions/checkout@v4
-      - name: Install kubectl
-        uses: azure/setup-kubectl@v4
-      - name: Validate manifests
+      - name: Install kubeconform
         run: |
-          for f in k8s/*.yaml; do
-            kubectl apply --dry-run=client --validate=false -f "$f"
-          done
+          wget -q https://github.com/yannh/kubeconform/releases/download/v0.6.7/kubeconform-linux-amd64.tar.gz
+          tar xf kubeconform-linux-amd64.tar.gz
+          sudo mv kubeconform /usr/local/bin/
+      - name: Validate manifests
+        run: kubeconform -strict -summary k8s/*.yaml
