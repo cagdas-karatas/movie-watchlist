@@ -59,5 +59,6 @@ Thumbs.db
 *.swp
 *.swo
 
-# Sunum (HTML slayt — PDF export için kullanılır, repoya girmez)
+# Sunum dosyaları (ekran görüntüsü alınıp PNG/PDF olarak kullanılır)
 docs/slides.html
+docs/architecture-diagram.html
